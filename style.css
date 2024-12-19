@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Consolas', monospace;
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  transition: margin-left 0.3s ease; /* Transisi saat sidebar muncul */
+}
+
+/* Styling untuk sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+.sidebar h2 {
+  text-align: left;
+  font-size: 24px;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* Styling untuk menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 15px 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.sidebar nav ul li a:hover{
+  background-color: #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Main Content */
+.content {
+  width: 80%;
+  margin-left: 15%;
+  flex: 1;
+  background-color: #ecf0f1;
+  padding: 20px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease; /* Transisi saat sidebar muncul */
+}
+
+.content header h1 {
+  margin-bottom: 20px;
+}
+
+.content section {
+  margin-bottom: 40px;
+}
+
+.content section h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+#overview p {
+  color: #000; /* Warna teks yang kontras */
+  font-size: 18px; /* Ukuran font */
+  line-height: 1.6; /* Jarak antar baris */
+  margin: 10px 0; /* Jarak antar paragraf */
+  font-weight: 550; /* Ketebalan sedang */
+}
+
+table {
+  border-radius: 10px; /* Menumpulkan sudut tabel */
+  border: 1px solid #ccc; /* Menambahkan border agar terlihat jelas */
+  width: 100%;
+  border-collapse: separate;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+table th {
+  background-color: #000;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Menambahkan border-radius pada setiap sel (th, td) */
+th:first-child{
+  border-top-left-radius: 10px; /* Sudut kiri atas */
+}
+
+th:last-child{
+  border-top-right-radius: 10px; /* Sudut kiri atas */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Tampilan mobile (Responsive) */
+@media screen and (max-width: 768px) {
+  /* Menampilkan hamburger menu pada tampilan mobile */
+  .hamburger {
+    width: 100%;
+    position: fixed;
+    display: block;
+    top: 0;
+    margin-top: 0;
+    height: 40px;
+    padding-left: 90%;
+    background-color: white;
+  }
+
+  /* Menu disembunyikan secara default pada tampilan mobile */
+  #menu {
+    display: none;
+  }
+
+  #menu.active {
+    display: block;
+  }
+
+  .dashboard {
+    flex-direction: column;
+  }
+  .sidebar {
+    left: -100%; /* Sidebar disembunyikan */
+  }
+
+  .sidebar.active {
+    left: 0; /* Sidebar ditampilkan */
+    width: 42%;
+    z-index: 98;
+  }
+
+  .content {
+    margin-left: 0; /* Mengatur margin untuk konten utama */
+    width: 100%;
+  }
+
+  #overview, #sales, #table {
+    padding-top: 45px;
+  }
+
+
+
+  table th, table td {
+    font-size: 14px;
+  }
+}
